@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="container">
+    <h1 class="text-center">Administrador</h1>
+    <br />
+    <h4 class="text-center">
+        The Frozen Throne
+    </h4>
+    <div align="center"><img src="~/Imagenes/Soy_admin.jpg" /></div>
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        
+        <div class="col">
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Dueños</h5>
+                    <p class="card-text text-center">Administrar a los Dueños</p>
+                    <a class="btn btn-primary" asp-area="" asp-controller="Dueños" asp-action="Index">Administrar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Mascotas</h5>
+                    <p class="card-text text-center">Administrar a las Mascotas</p>
+                    <a class="btn btn-primary" asp-area="" asp-controller="Mascotas" asp-action="Index">Administrar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Reservas</h5>
+                    <p class="card-text">Administrar las reservas.</p>
+                    <a class="btn btn-primary" asp-area="" asp-controller="Reservas" asp-action="Index">Administrar</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<hr />
+}
