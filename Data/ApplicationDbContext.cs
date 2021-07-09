@@ -16,6 +16,7 @@ namespace HoteldeMascotas.Data
         public DbSet<Dueños> dueño { get; set; }
         public DbSet<Reserva> Reservas { get; set; }
         public DbSet<Mascotas> Mascota { get; set; }
+        public DbSet<Emails>Mails { get; set; }
 
     }
 }

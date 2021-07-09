@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model IEnumerable<HoteldeMascotas.Models.Emails>
+@{ ViewData["Title"] = "Emails";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h1>Lista de Emails</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(Correo => Correo.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Correo => Correo.Por)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Correo => Correo.Para)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Correo => Correo.Asunto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Correo => Correo.Mensaje)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Correo in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Correo.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Correo.Por)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Correo.Para)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Correo.Asunto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Correo.Mensaje)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
