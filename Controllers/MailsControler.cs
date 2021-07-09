@@ -29,8 +29,8 @@ namespace TiendaRopaUsada_MVC.Controllers
             return View(await _context.Mails.ToListAsync());
         }
 
-        [Authorize]
-        public IActionResult IngresoMail()
+        
+        public IActionResult Index2()
         {
             return View();
         }
@@ -38,7 +38,7 @@ namespace TiendaRopaUsada_MVC.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> IngresoMail([Bind("id, Por, Para, Asunto , Mensaje")] Emails emailObject)
+        public async Task<IActionResult> Index2([Bind("id, Por, Para, Asunto , Mensaje")] Emails emailObject)
         {
 
             MailMessage email = new MailMessage();
@@ -54,7 +54,7 @@ namespace TiendaRopaUsada_MVC.Controllers
             smtp.UseDefaultCredentials = false;
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
-            smtp.Credentials = new System.Net.NetworkCredential("hibarilaloski@gmail.com", "lalo90377347");
+            smtp.Credentials = new System.Net.NetworkCredential("hibarilaloski@gmail.com", "clavexdddd");
             ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
             smtp.EnableSsl = true;
 
