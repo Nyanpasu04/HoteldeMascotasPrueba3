@@ -12,13 +12,13 @@ using System.Net.Security;
 using HoteldeMascotas.Models;
 using HoteldeMascotas.Data;
 
-namespace TiendaRopaUsada_MVC.Controllers
+namespace HoteldeMascotas.Controllers
 {
-    public class EmailController : Controller
+    public class EmailsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public EmailController(ApplicationDbContext context)
+        public EmailsController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -34,6 +34,7 @@ namespace TiendaRopaUsada_MVC.Controllers
         {
             return View();
         }
+        
 
         [HttpPost]
         [Authorize]
@@ -41,33 +42,33 @@ namespace TiendaRopaUsada_MVC.Controllers
         public async Task<IActionResult> Index2([Bind("id, Por, Para, Asunto , Mensaje")] Emails emailObject)
         {
 
-            MailMessage email = new MailMessage();
+            MailMessage Email = new MailMessage();
 
-            email.From = new MailAddress(emailObject.Por, "HotelMascotasCorreo", System.Text.Encoding.UTF8);
-            email.To.Add("hibarilaloski@gmail.com");
-            email.Subject = "Solicito contacto";
-            email.Body = emailObject.Mensaje;
-            email.IsBodyHtml = true;
-            email.Priority = MailPriority.Normal;
+            Email.From = new MailAddress(emailObject.Para, "HotelMascotasCorreo", System.Text.Encoding.UTF8);
+            Email.To.Add("hibarilaloski@gmail.com");
+            Email.Subject = "Solicito contacto";
+            Email.Body = emailObject.Mensaje;
+            Email.IsBodyHtml = true;
+            Email.Priority = MailPriority.Normal;
 
             SmtpClient smtp = new SmtpClient();
             smtp.UseDefaultCredentials = false;
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
-            smtp.Credentials = new System.Net.NetworkCredential("hibarilaloski@gmail.com", "clavexdddd");
+            smtp.Credentials = new System.Net.NetworkCredential("hibarilaloski@gmail.com", "lalo90377347");
             ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
             smtp.EnableSsl = true;
 
-            smtp.Send(email);
+            smtp.Send(Email);
             smtp.Dispose();
 
 
             if (ModelState.IsValid)
             {
-                emailObject.Para = "j.acevedo.espindola@gmail.com";
+                emailObject.Para = "hibarilaloski@gmail.com";
                 _context.Add(emailObject);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(IndexMail));
+                return RedirectToAction();
             }
 
             return View(emailObject);
